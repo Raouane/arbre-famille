@@ -19,31 +19,31 @@ const FamilyMemberCard = ({ name, relation }: { name: string; relation: string }
 );
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("accueil");
 
   return (
     <div className="min-h-screen p-8">
       <CustomCursor />
       
-      {/* Header */}
+      {/* En-tête */}
       <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 animate-float">My Family Tree</h1>
-        <p className="text-lg text-gray-600">Explore and learn about your family!</p>
+        <h1 className="text-4xl font-bold mb-4 animate-float">Mon Arbre Généalogique</h1>
+        <p className="text-lg text-gray-600">Explore et découvre ta famille !</p>
       </header>
 
-      {/* Main Navigation */}
+      {/* Navigation Principale */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <FamilyButton icon={Home} label="Meet My Family" />
-        <FamilyButton icon={Users} label="Discover My Uncles" />
-        <FamilyButton icon={BookOpen} label="Family Stories" />
+        <FamilyButton icon={Home} label="Rencontrer Ma Famille" />
+        <FamilyButton icon={Users} label="Découvrir Mes Oncles" />
+        <FamilyButton icon={BookOpen} label="Histoires de Famille" />
       </div>
 
-      {/* Family Members Grid */}
+      {/* Grille des Membres de la Famille */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <FamilyMemberCard name="Mom" relation="Mother" />
-        <FamilyMemberCard name="Dad" relation="Father" />
-        <FamilyMemberCard name="Sarah" relation="Sister" />
-        <FamilyMemberCard name="Tom" relation="Brother" />
+        <FamilyMemberCard name="Maman" relation="Mère" />
+        <FamilyMemberCard name="Papa" relation="Père" />
+        <FamilyMemberCard name="Sarah" relation="Sœur" />
+        <FamilyMemberCard name="Tom" relation="Frère" />
       </div>
     </div>
   );
