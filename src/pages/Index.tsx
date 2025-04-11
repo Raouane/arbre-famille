@@ -4,7 +4,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, MessageCircle } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 
 // Service Card Component
 const ServiceCard = ({ icon: Icon, title, description, imageSrc }: { icon: any; title: string; description: string; imageSrc?: string }) => (
@@ -42,6 +41,14 @@ const TestimonialCard = ({ name, text, imageSrc }: { name: string; text: string;
 const Index = () => {
   const [activeSection, setActiveSection] = useState("accueil");
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* En-tête / Navigation */}
@@ -49,25 +56,113 @@ const Index = () => {
         <div className="container mx-auto flex justify-between items-center px-4">
           <h1 className="text-2xl font-bold text-primary">Dr. Sophie Martin</h1>
           <nav className="hidden md:flex space-x-6">
-            <button className="nav-link hover:text-primary">Accueil</button>
-            <button className="nav-link hover:text-primary">À Propos</button>
-            <button className="nav-link hover:text-primary">Nos Soins</button>
-            <button className="nav-link hover:text-primary">Témoignages</button>
-            <button className="nav-link hover:text-primary">Contact</button>
+            <button 
+              className={`nav-link hover:text-primary ${activeSection === 'accueil' ? 'text-primary' : ''}`}
+              onClick={() => scrollToSection('accueil')}
+            >
+              Accueil
+            </button>
+            <button 
+              className={`nav-link hover:text-primary ${activeSection === 'a-propos' ? 'text-primary' : ''}`}
+              onClick={() => scrollToSection('a-propos')}
+            >
+              À Propos
+            </button>
+            <button 
+              className={`nav-link hover:text-primary ${activeSection === 'nos-soins' ? 'text-primary' : ''}`}
+              onClick={() => scrollToSection('nos-soins')}
+            >
+              Nos Soins
+            </button>
+            <button 
+              className={`nav-link hover:text-primary ${activeSection === 'temoignages' ? 'text-primary' : ''}`}
+              onClick={() => scrollToSection('temoignages')}
+            >
+              Témoignages
+            </button>
+            <button 
+              className={`nav-link hover:text-primary ${activeSection === 'contact' ? 'text-primary' : ''}`}
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact
+            </button>
           </nav>
-          <Button className="md:hidden">Menu</Button>
+          <Button 
+            className="md:hidden"
+            onClick={() => {
+              const mobileMenu = document.getElementById('mobile-menu');
+              if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+              }
+            }}
+          >
+            Menu
+          </Button>
+        </div>
+        <div id="mobile-menu" className="container mx-auto px-4 py-2 hidden md:hidden">
+          <div className="flex flex-col space-y-2">
+            <button 
+              className={`nav-link hover:text-primary py-2 ${activeSection === 'accueil' ? 'text-primary' : ''}`}
+              onClick={() => {
+                scrollToSection('accueil');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+            >
+              Accueil
+            </button>
+            <button 
+              className={`nav-link hover:text-primary py-2 ${activeSection === 'a-propos' ? 'text-primary' : ''}`}
+              onClick={() => {
+                scrollToSection('a-propos');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+            >
+              À Propos
+            </button>
+            <button 
+              className={`nav-link hover:text-primary py-2 ${activeSection === 'nos-soins' ? 'text-primary' : ''}`}
+              onClick={() => {
+                scrollToSection('nos-soins');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+            >
+              Nos Soins
+            </button>
+            <button 
+              className={`nav-link hover:text-primary py-2 ${activeSection === 'temoignages' ? 'text-primary' : ''}`}
+              onClick={() => {
+                scrollToSection('temoignages');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+            >
+              Témoignages
+            </button>
+            <button 
+              className={`nav-link hover:text-primary py-2 ${activeSection === 'contact' ? 'text-primary' : ''}`}
+              onClick={() => {
+                scrollToSection('contact');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+            >
+              Contact
+            </button>
+          </div>
         </div>
       </header>
       
       {/* Hero Section */}
-      <section className="hero-section py-16 md:py-24">
+      <section id="accueil" className="hero-section py-16 md:py-24">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Un sourire en pleine santé</h1>
             <p className="text-lg text-gray-600 mb-8">
               Des soins dentaires de qualité pour toute la famille dans un environnement confortable et accueillant
             </p>
-            <Button size="lg" className="px-8 py-6">
+            <Button 
+              size="lg" 
+              className="px-8 py-6"
+              onClick={() => scrollToSection('contact')}
+            >
               <Calendar className="mr-2" />
               Prendre rendez-vous
             </Button>
@@ -83,7 +178,7 @@ const Index = () => {
       </section>
       
       {/* À propos section */}
-      <section className="bg-pastel-lavender/10 py-16">
+      <section id="a-propos" className="bg-pastel-lavender/10 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">À Propos</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -114,7 +209,7 @@ const Index = () => {
       </section>
       
       {/* Services section */}
-      <section className="py-16">
+      <section id="nos-soins" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Nos Soins Dentaires</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -159,7 +254,7 @@ const Index = () => {
       </section>
       
       {/* Testimonials section */}
-      <section className="bg-pastel-lavender/10 py-16">
+      <section id="temoignages" className="bg-pastel-lavender/10 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Témoignages</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -183,7 +278,7 @@ const Index = () => {
       </section>
       
       {/* Contact section */}
-      <section className="py-16">
+      <section id="contact" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Contact</h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -279,14 +374,13 @@ const Index = () => {
       </footer>
       
       {/* Bouton WhatsApp flottant */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <a href="https://wa.me/33123456789" className="fixed bottom-6 right-6 z-50" target="_blank" rel="noopener noreferrer">
         <Button className="rounded-full h-14 w-14 flex items-center justify-center bg-green-500 hover:bg-green-600">
           <MessageCircle className="h-6 w-6 text-white" />
         </Button>
-      </div>
+      </a>
     </div>
   );
 };
 
 export default Index;
-
