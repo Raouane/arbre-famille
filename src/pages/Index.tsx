@@ -7,8 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 
 // Service Card Component
-const ServiceCard = ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => (
+const ServiceCard = ({ icon: Icon, title, description, imageSrc }: { icon: any; title: string; description: string; imageSrc?: string }) => (
   <Card className="service-card">
+    <div className="aspect-video overflow-hidden rounded-t-xl">
+      <img src={imageSrc || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+    </div>
     <CardContent className="p-6">
       <Icon className="h-10 w-10 text-primary mb-3" />
       <h3 className="text-lg font-bold mb-2">{title}</h3>
@@ -18,11 +21,17 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any; title: str
 );
 
 // Testimonial Card Component
-const TestimonialCard = ({ name, text }: { name: string; text: string }) => (
+const TestimonialCard = ({ name, text, imageSrc }: { name: string; text: string; imageSrc?: string }) => (
   <Card className="testimonial-card">
     <CardContent className="p-6">
       <div className="flex items-center mb-4">
-        <div className="h-12 w-12 rounded-full bg-pastel-lavender mr-3"></div>
+        <div className="h-12 w-12 rounded-full bg-pastel-lavender mr-3 overflow-hidden">
+          {imageSrc ? (
+            <img src={imageSrc} alt={name} className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full bg-pastel-lavender"></div>
+          )}
+        </div>
         <h3 className="text-lg font-bold">{name}</h3>
       </div>
       <p className="text-sm text-gray-600 italic">"{text}"</p>
@@ -64,7 +73,11 @@ const Index = () => {
             </Button>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-xl">
-            <div className="aspect-video bg-pastel-mint"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop" 
+              alt="Cabinet dentaire moderne" 
+              className="w-full h-full object-cover aspect-video" 
+            />
           </div>
         </div>
       </section>
@@ -75,7 +88,11 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-center mb-12">À Propos</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <div className="aspect-square bg-pastel-mint"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=2080&auto=format&fit=crop" 
+                alt="Dr. Sophie Martin" 
+                className="w-full h-full object-cover aspect-square" 
+              />
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4">Dr. Sophie Martin</h3>
@@ -105,31 +122,37 @@ const Index = () => {
               icon={Clock}
               title="Soins des caries" 
               description="Traitement des caries avec les dernières techniques mini-invasives pour préserver au maximum vos dents."
+              imageSrc="https://images.unsplash.com/photo-1606811961251-41f1a3f0e3c9?q=80&w=2074&auto=format&fit=crop"
             />
             <ServiceCard 
               icon={Clock}
               title="Blanchiment dentaire" 
               description="Des techniques de blanchiment sûres et efficaces pour un sourire éclatant."
+              imageSrc="https://images.unsplash.com/photo-1571748152799-98929d0cbf95?q=80&w=2070&auto=format&fit=crop"
             />
             <ServiceCard 
               icon={Clock}
               title="Détartrage" 
               description="Un nettoyage professionnel pour éliminer plaque et tartre, et prévenir les problèmes gingivaux."
+              imageSrc="https://images.unsplash.com/photo-1588776814546-daab30f310ce?q=80&w=1974&auto=format&fit=crop"
             />
             <ServiceCard 
               icon={Clock}
               title="Orthodontie" 
               description="Solutions discrètes pour aligner vos dents, incluant des gouttières transparentes."
+              imageSrc="https://images.unsplash.com/photo-1595003298804-0d1bb0400fce?q=80&w=2080&auto=format&fit=crop"
             />
             <ServiceCard 
               icon={Clock}
               title="Implants dentaires" 
               description="Remplacement durable des dents manquantes avec des implants de haute qualité."
+              imageSrc="https://images.unsplash.com/photo-1579390169855-a027ca1370cc?q=80&w=2070&auto=format&fit=crop"
             />
             <ServiceCard 
               icon={Clock}
               title="Pédodontie" 
               description="Soins adaptés aux enfants dans un environnement rassurant et ludique."
+              imageSrc="https://images.unsplash.com/photo-1588776814827-85c3e64d2a0b?q=80&w=2070&auto=format&fit=crop"
             />
           </div>
         </div>
@@ -143,14 +166,17 @@ const Index = () => {
             <TestimonialCard 
               name="Marie L." 
               text="J'avais une peur bleue des dentistes avant de rencontrer Dr. Martin. Sa patience et sa douceur m'ont permis de retrouver confiance et d'avoir un sourire dont je suis fière."
+              imageSrc="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop"
             />
             <TestimonialCard 
               name="Thomas D." 
               text="Excellent suivi pour mon appareil dentaire invisible. Le Dr. Martin a su répondre à toutes mes questions et les résultats sont impressionnants."
+              imageSrc="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
             />
             <TestimonialCard 
               name="Julie B." 
               text="Mes enfants ne sont plus angoissés d'aller chez le dentiste. L'équipe est formidable et le cabinet accueillant. Je recommande vivement!"
+              imageSrc="https://images.unsplash.com/photo-1619538189873-3cc0ad364b7d?q=80&w=1974&auto=format&fit=crop"
             />
           </div>
         </div>
@@ -226,9 +252,11 @@ const Index = () => {
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
-                <div className="aspect-video bg-pastel-mint flex items-center justify-center">
-                  <p className="text-gray-600">Carte Google Maps ici</p>
-                </div>
+                <img 
+                  src="https://maps.googleapis.com/maps/api/staticmap?center=Paris,France&zoom=14&size=600x300&maptype=roadmap&markers=color:blue%7CParis,France&key=YOUR_API_KEY" 
+                  alt="Localisation du cabinet" 
+                  className="w-full"
+                />
               </div>
             </div>
           </div>
@@ -261,3 +289,4 @@ const Index = () => {
 };
 
 export default Index;
+
