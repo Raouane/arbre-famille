@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Clock, MapPin, Phone, Mail, MessageCircle, Whatsapp } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -375,7 +375,7 @@ const Index = () => {
       {/* Bouton WhatsApp flottant */}
       <a href="https://wa.me/33123456789" className="fixed bottom-6 right-6 z-50" target="_blank" rel="noopener noreferrer">
         <Button className="rounded-full h-14 w-14 flex items-center justify-center bg-green-500 hover:bg-green-600">
-          <Whatsapp className="h-6 w-6 text-white" />
+          <MessageCircle className="h-6 w-6 text-white" />
         </Button>
       </a>
     </div>
