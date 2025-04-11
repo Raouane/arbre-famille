@@ -19,7 +19,7 @@ export default {
       },
       colors: {
         border: "hsl(var(--border))",
-        input: "hsl(var(--border))",
+        input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -51,7 +51,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors
+        // Custom colors for dental website
         pastel: {
           pink: "#FFE5EC",
           mint: "#E0F4E8",
@@ -69,14 +69,6 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "cursor-sparkle": {
-          "0%": { transform: "scale(1) rotate(0deg)", opacity: "1" },
-          "100%": { transform: "scale(0) rotate(180deg)", opacity: "0" },
-        },
-        "bounce-soft": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5px)" },
-        },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
@@ -85,8 +77,6 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "cursor-sparkle": "cursor-sparkle 0.8s ease-out forwards",
-        "bounce-soft": "bounce-soft 2s ease-in-out infinite",
         float: "float 3s ease-in-out infinite",
       },
     },

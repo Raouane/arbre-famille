@@ -13,19 +13,19 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 346 100% 93%;
-    --primary-foreground: 355 100% 35%;
-    --secondary: 145 50% 92%;
-    --secondary-foreground: 145 54% 35%;
+    --primary: 199 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 160 84% 39%;
+    --secondary-foreground: 220 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 252 100% 95%;
-    --accent-foreground: 262 83% 58%;
+    --accent: 199 45% 90%;
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 199 100% 50%;
     --radius: 1rem;
   }
 
@@ -34,8 +34,7 @@
   }
 
   body {
-    @apply bg-pastel-mint text-foreground antialiased font-quicksand overflow-x-hidden;
-    cursor: none;
+    @apply bg-white text-foreground antialiased font-quicksand;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -44,21 +43,19 @@
 }
 
 @layer components {
-  .custom-cursor {
-    @apply pointer-events-none fixed z-50 h-8 w-8 rounded-full bg-contain bg-center bg-no-repeat transition-transform duration-100;
+  .hero-section {
+    @apply bg-gradient-to-br from-accent/80 to-white;
   }
 
-  .cursor-trail {
-    @apply pointer-events-none absolute h-2 w-2 rounded-full bg-pastel-pink opacity-50;
+  .nav-link {
+    @apply text-gray-700 hover:text-primary transition-colors;
   }
 
-  .family-button {
-    @apply relative flex h-16 items-center justify-center gap-2 rounded-2xl bg-white px-6 text-lg font-semibold shadow-lg 
-           transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95;
+  .service-card {
+    @apply overflow-hidden rounded-xl bg-white shadow hover:shadow-lg transition-shadow duration-300;
   }
 
-  .family-member-card {
-    @apply relative overflow-hidden rounded-2xl bg-white p-4 shadow-lg transition-all duration-300
-           hover:scale-105 hover:shadow-xl active:scale-95;
+  .testimonial-card {
+    @apply overflow-hidden rounded-xl bg-white shadow hover:shadow-lg transition-shadow duration-300;
   }
 }
