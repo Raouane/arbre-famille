@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { Calendar, Clock, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import BookingModal from "@/components/BookingModal";
 
 // Service Card Component
 const ServiceCard = ({ icon: Icon, title, description, imageSrc }: { icon: any; title: string; description: string; imageSrc?: string }) => (
@@ -157,14 +159,15 @@ const Index = () => {
             <p className="text-lg text-gray-600 mb-8">
               Des soins dentaires de qualité pour toute la famille dans un environnement confortable et accueillant
             </p>
-            <Button 
-              size="lg" 
-              className="px-8 py-6"
-              onClick={() => scrollToSection('contact')}
-            >
-              <Calendar className="mr-2" />
-              Prendre rendez-vous
-            </Button>
+            <BookingModal>
+              <Button 
+                size="lg" 
+                className="px-8 py-6"
+              >
+                <Calendar className="mr-2" />
+                Prendre rendez-vous
+              </Button>
+            </BookingModal>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img 
